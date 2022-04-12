@@ -1,0 +1,43 @@
+<html>
+<head>
+  <title>BWC</title>
+    <style>
+   button {
+    background: #BFBFBF; /* Синий цвет фона */
+    color: #fff; /* Белый цвет текста */
+    border: none; /* Убираем рамку */
+    padding: 1rem 1.5rem; /* Поля вокруг текста */
+    margin-bottom: 1rem; /* Отступ снизу */ 
+   }
+   .blue { background: #007E60; }
+   .green { background: #73A353; }
+   .red { background: #C1172C; }
+   .orange { background: #F7941E; }
+  </style>
+</head>
+<body>
+  <button type="button" id=START class=blue>СТАРТ</button>
+  <script>
+  (()=>{
+const elem=document.querySelector(".blue");
+elem.addEventListener('click',clickStart);
+
+    function clickStart() {
+      console.log("СТАРТ");
+      status.innerHTML="СТАРТ !!!";
+      
+    }
+    
+    })();
+  </script>
+  <br/>
+  <br/>
+  <label> 1 </label><button type="button">5</button> <button type="button">20</button> <button type="button">50</button>
+  <br/>
+  <br/>
+  <label> 2 </label><button type="button">5</button> <button type="button">20</button> <button type="button">50</button>
+  <br/>
+  <br/>
+  <button type="button" id=FINISH >ФИНИШ</button>  
+</body>
+</html>
