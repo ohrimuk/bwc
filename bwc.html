@@ -15,21 +15,30 @@
    .red { background: #C1172C; }
    .orange { background: #F7941E; }
   </style>
+  <script>
+  var timer0=0;
+  </script>
 </head>
 <body>
+  <div id='timeDiv'> TIME </div>
   <button type="button" id=START class=blue>СТАРТ</button>
   <script>
   (()=>{
-const elem=document.querySelector(".blue");
+const elem=document.querySelector('.blue');
 elem.addEventListener('click',clickStart);
+timeDiv=document.getElementById('timeDiv');
 
     function clickStart() {
       console.log("СТАРТ");
-      fetch('http://cab.wikilink.by/check',{mode:'no-cors'}).then((response)=>{console.log(response.statusText);});
+      fetch('http://tnt:8082/view',{mode:'no-cors'}).then((response)=>{console.log(response.statusText);});
       this.style.background = "red";
+      timeValue=0;
+      timer0=setInterval(function () {
+        timeValue=timeValue+10;
+        timeDiv.innerHTML=Math.trunc(timeValue/60000)+":"+Math.trunc(timeValue/1000%60)+'.'+Math.trunc(timeValue/10%100)+'   ';
+      },10)
     }
-    
-    })();
+})();
   </script>
   <br/>
   <br/>
@@ -40,5 +49,19 @@ elem.addEventListener('click',clickStart);
   <br/>
   <br/>
   <button type="button" id=FINISH >ФИНИШ</button>  
+  <script>
+  (()=>{
+const elem=document.getElementById('FINISH');
+elem.addEventListener('click',clickFinish);
+//timeDiv=document.getElementById('timeDiv');
+    function clickFinish() {
+      console.log("ФИНИШ");
+      fetch('http://tnt:8082/view',{mode:'no-cors'}).then((response)=>{console.log(response.statusText);});
+      this.style.background = "green";
+      clearInterval(timer0);
+	}
+    
+    })();
+  </script>
 </body>
 </html>
